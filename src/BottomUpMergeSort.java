@@ -1,4 +1,4 @@
-public class BottomUpMergeSort {
+public class BottomUpMergeSort implements SortAlgorithm{
     public String getName() { return "Bottom Up Merge Sort"; }
     public void sort(SortArray arr){
         for(int size = 1; size < arr.size(); size *= 2){
