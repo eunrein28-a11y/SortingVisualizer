@@ -42,6 +42,46 @@ public class MergeSort implements SortAlgorithm {
     @Override
     public void sort(SortArray arr) {
         // TODO: write merge sort here (add helper methods below)
-
+        Item[] aux = new Item[arr.size()];
+        mergeSort(arr, aux, 0, arr.size() - 1);
+    }
+    private void mergeSort(SortArray arr, Item[] aux, int lo, int hi){
+        if(lo >= hi){
+            return;
+        }
+        int mid = lo + (hi - lo) / 2;
+        mergeSort(arr, aux, lo, mid);
+        mergeSort(arr, aux, mid + 1, hi);
+        merge(arr, aux, lo, mid, hi);
+    }
+    private void merge(SortArray arr, Item[] aux, int lo, int mid, int hi){
+        int i = lo;
+        int j = mid + 1;
+        int k = lo;
+        for(int l = lo; l <= hi; l++){
+            aux[l] = arr.get(l);
+        }
+        while(i <= mid && j <= hi){
+            if(arr.less(aux[i], aux[j])){
+                arr.set(k, aux[i]);
+                i++;
+            }
+            else{
+                arr.set(k, aux[j]);
+                j++;
+            }
+            k++;
+        }
+        while(i <= mid){
+            arr.set(k, aux[i]);
+            i++;
+            k++;
+        }
+        while(j <= hi){
+            arr.set(k, aux[j]);
+            j++;
+            k++;
+        }
+        arr.mark("merge " + lo + " - " + hi);
     }
 }
