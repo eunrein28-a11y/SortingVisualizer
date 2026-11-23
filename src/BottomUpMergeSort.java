@@ -27,7 +27,7 @@ public class BottomUpMergeSort implements SortAlgorithm{
             }
             k++;
         }
-        while(i <= mid){
+        while(i <= mid && k < arr.size()){
             arr.set(k, aux[i]);
             i++;
             k++;
