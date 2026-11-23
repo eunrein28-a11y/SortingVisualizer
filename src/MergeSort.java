@@ -62,13 +62,13 @@ public class MergeSort implements SortAlgorithm {
             aux[l] = arr.get(l);
         }
         while(i <= mid && j <= hi){
-            if(arr.less(aux[i], aux[j])){
-                arr.set(k, aux[i]);
-                i++;
-            }
-            else{
+            if(arr.less(aux[j], aux[i])){
                 arr.set(k, aux[j]);
                 j++;
+            }
+            else{
+                arr.set(k, aux[i]);
+                i++;
             }
             k++;
         }
